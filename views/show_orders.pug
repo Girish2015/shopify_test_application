@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    title Orders Page
+    link(
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    )
+    script(
+      src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"
+    )
+  body(style="margin: 0em 3em 0em 3em")
+    h2 Orders Page
+    if notification
+      style.
+        .green{
+          background-color: '#74de74';
+          color: black;
+        }
+      script.
+        M.toast({ html: 'Order successfully updated.', classes: 'rounded green' })
+        window.history.pushState({}, null, window.location.href.split('?')[0])
+    table
+      thead
+        tr
+          th ID
+          th Customer Email
+          th Customer First Name
+          th Customer Last Name
+          th Order ID
+          th Edit
+      
+      tbody
+        each val in data
+          tr
+            td= val._id
+            td= val.customer_email
+            td= val.customer_first_name
+            td= val.customer_last_name
+            td= val.order_id
+            td
+              a(href="/orders/edit/" + val._id + '/' + val.order_id) Edit

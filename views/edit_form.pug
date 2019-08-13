@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    title Edit order #{data.order_id}
+    link(
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    )
+    script(
+      src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"
+    )
+  body(class="container")
+    h2 Edit Order #{data.order_id}
+    h5(style="margin-bottom: 2em;") Enter Email, First or Last Name to change.
+    div(class='row')
+      form(action='/orders/edit/' + data._id + '/' + data.order_id class='col s12' method='post')
+        div(class='input-field col s6')
+          input(type="email" name="email" placeholder=data.customer_email id="email" class="validate")
+          label(for="email") Email
+        div(class="input-field col s6")
+          input(type="text" name="first_name" placeholder=data.customer_first_name id="first_name" class="validate")
+          label(for="first_name") First Name
+        div(class="input-field col s6")
+          input(type="text" name="last_name" placeholder=data.customer_last_name id="last_name" class="validate")
+          label(for="last_name") Last Name
+        div(class="col s12 m12 l12" style="margin-top: 2em;")
+          button(class="btn waves-effect waves-light" type="submit" name="action") Submit
+          
+
